@@ -1,5 +1,39 @@
-# Quran-Hadees
-It is an IOS app about the Quran and Hades teachings. Some features include a notification note and namaz tracker etc..
+# QuranNotify 📱
+
+QuranNotify is an iOS app that delivers daily Quranic verses through notifications, helping users stay connected with the Quran's wisdom throughout the year.
+
+## Features ✨
+
+- 📌 Daily Quranic verses with translations and explanations
+- 🔔 Customizable notification timing
+- 🌙 Beautiful Islamic-themed UI design
+- 📖 Full collection of 365 unique verses
+- 🔍 Search functionality for verses
+- 📱 Interactive notifications with a "Read More" option
+- 🌍 Original Arabic text with English translations
+- 📝 Detailed explanations for each verse
+
+## Screenshots 📸
+
+
+## Requirements 🛠
+
+- iOS 15.0+
+- Xcode 14.0+
+- Swift 5.0+
+- 
+## Future Plans 🚀
+
+- [ ] Add Hadees section
+- [ ] Include audio recitations
+- [ ] Implement verse sharing
+- [ ] Add favourite verses feature
+- [ ] Create widget support
+- [ ] Add more customization options
+
+
+## Installation 💻
+
 
 # Contributor Guidelines  
 
