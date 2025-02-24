@@ -6,7 +6,7 @@ It is an IOS app about the Quran and Hades teachings. Some features include a no
 Thank you for your interest in contributing to this project! To keep things clear and organized, please note the following:  
 
 1. **Project Ownership**  
-   - This project is maintained by [Your Name], and all contributions become part of the project under its existing structure.  
+   - This project is maintained by the owner Jawwad Ahmed, and all contributions become part of the project under its existing structure.  
 
 2. **Contributions & License**  
    - By submitting a contribution (code, documentation, etc.), you agree that it may be used, modified, or distributed as part of the project.  
