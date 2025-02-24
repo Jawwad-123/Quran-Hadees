@@ -64,6 +64,10 @@ struct SettingsView: View {
             .onChange(of: notificationsEnabled) { isEnabled in
                 if isEnabled {
                     NotificationManager.shared.requestAuthorization()
+                    // Only schedule notifications after a slight delay to ensure authorization is complete
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        NotificationManager.shared.scheduleNotifications(at: notificationTime)
+                    }
                 } else {
                     NotificationManager.shared.cancelNotifications()
                 }
@@ -75,7 +79,11 @@ struct SettingsView: View {
             }
             .onChange(of: hadeesNotificationsEnabled) { isEnabled in
                 if isEnabled {
-                    NotificationManager.shared.scheduleHadeesNotifications(at: hadeesNotificationTime)
+                    NotificationManager.shared.requestAuthorization()
+                    // Only schedule notifications after a slight delay to ensure authorization is complete
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        NotificationManager.shared.scheduleHadeesNotifications(at: hadeesNotificationTime)
+                    }
                 } else {
                     NotificationManager.shared.cancelHadeesNotifications()
                 }

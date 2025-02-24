@@ -57,7 +57,8 @@ class NotificationManager {
             DispatchQueue.main.async {
                 if granted {
                     print("✅ Notification permission granted")
-                    self.scheduleTestNotification() // Schedule test notification immediately
+                    // Remove automatic test notification
+                    // self.scheduleTestNotification()
                 } else {
                     print("❌ Notification permission denied")
                     if let error = error {
@@ -176,26 +177,28 @@ class NotificationManager {
     
     // Helper function to create notification attachment from app icon
     private func createNotificationAttachment() -> UNNotificationAttachment? {
-        guard let url = Bundle.main.url(forResource: "AppIcon", withExtension: "png") else {
-            print("Error: Could not find app icon")
-            return nil
+        if let image = UIImage(named: "AppIcon"),
+           let data = image.pngData(),
+           let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("notificationIcon.png") {
+            
+            try? data.write(to: url)
+            
+            do {
+                let attachment = try UNNotificationAttachment(
+                    identifier: "appIcon",
+                    url: url,
+                    options: [
+                        UNNotificationAttachmentOptionsThumbnailHiddenKey: false,
+                        UNNotificationAttachmentOptionsThumbnailClippingRectKey: CGRect(x: 0, y: 0, width: 1, height: 1).dictionaryRepresentation
+                    ]
+                )
+                return attachment
+            } catch {
+                print("Error creating notification attachment: \(error)")
+                return nil
+            }
         }
-        
-        do {
-            let attachment = try UNNotificationAttachment(
-                identifier: "appIcon",
-                url: url,
-                options: [
-                    UNNotificationAttachmentOptionsTypeHintKey: "AAPLAppIconTypeHint",
-                    UNNotificationAttachmentOptionsThumbnailHiddenKey: false,
-                    UNNotificationAttachmentOptionsThumbnailClippingRectKey: CGRect(x: 0, y: 0, width: 1, height: 1).dictionaryRepresentation
-                ]
-            )
-            return attachment
-        } catch {
-            print("Error creating notification attachment: \(error)")
-            return nil
-        }
+        return nil
     }
     
     private func listPendingNotifications() {

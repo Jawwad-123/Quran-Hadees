@@ -50,8 +50,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Register both categories
         UNUserNotificationCenter.current().setNotificationCategories([verseCategory, hadeesCategory])
         
-        // Request authorization
-        NotificationManager.shared.requestAuthorization()
+        // Remove the automatic authorization request
+        // NotificationManager.shared.requestAuthorization()
         
         return true
     }
